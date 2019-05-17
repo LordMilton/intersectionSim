@@ -1,3 +1,4 @@
+//Represents a car waiting at an intersection
 public class Car
 {
 	private int ticksWaiting;
