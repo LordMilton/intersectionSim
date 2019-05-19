@@ -10,10 +10,18 @@ public class Light
 
 	private Color lightColor;
 	private LinkedList<Road> roadsControlled;
+	private int ticksAsRed;
+	private int ticksAsYellow;
+	private int ticksAsGreen;
+	private int ticksUntilChange;
 
-	public Light()
+	public Light(int ticksAsRed, int ticksAsYellow, int ticksAsGreen)
 	{
 		lightColor = Color.RED;
+		this.ticksAsRed = ticksAsRed;
+		this.ticksAsYellow = ticksAsYellow;
+		this.ticksAsGreen = ticksAsGreen;
+		ticksUntilChange = this.ticksAsRed;
 	}
 
 	public addRoad(Road newRoad)
@@ -34,5 +42,33 @@ public class Light
 	public getColor()
 	{
 		return lightColor;
+	}
+
+	public addOneTick()
+	{
+		ticksUntilChange--;
+		if(ticksUntilChange == 0)
+		{
+			switch(lightColor)
+			{
+				case Color.RED:
+					lightColor = Color.GREEN;
+					ticksUntilChange = ticksAsGreen;
+					break;
+				case Color.YELLOW:
+					lightColor = Color.RED;
+					ticksUntilChange = ticksAsRed;
+					break;
+				case Color.GREEN:
+					lightColor = Color.YELLOW;
+					ticksUntilChange = ticksAsYellow;
+					break;
+			}
+		}
+		
+		for(Road road:roadsControlled)
+		{
+			road.addOneTick();
+		}
 	}
 }
