@@ -12,4 +12,9 @@ public class Car
 	{
 		ticksWaiting++;
 	}
+
+	public void getTicks()
+	{
+		return ticksWaiting;
+	}
 }
