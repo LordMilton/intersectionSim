@@ -1,3 +1,4 @@
+//TODO first car handling in here
 //Represents a car waiting at an intersection
 public class Car
 {
