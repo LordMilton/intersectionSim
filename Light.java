@@ -29,7 +29,7 @@ public class Light
 		lightColor = startingColor;
 	}
 
-	public addRoad(Road newRoad)
+	public void addRoad(Road newRoad)
 	{
 		roadsControlled.add(newRoad);
 	}
@@ -39,17 +39,17 @@ public class Light
 		return roadsControlled;
 	}
 
-	public changeColor(Color newColor)
+	public void changeColor(Color newColor)
 	{
 		lightColor = newColor;
 	}
 
-	public getColor()
+	public Color getColor()
 	{
 		return lightColor;
 	}
 
-	public addOneTick()
+	public void addOneTick()
 	{
 		ticksUntilChange--;
 		if(ticksUntilChange == 0)
