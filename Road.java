@@ -5,6 +5,8 @@ public class Road
 {
 	//Used as a queue, but all Cars need to be updated each tick
 	private LinkedList<Car> line;
+	//All cars which have left line aka "crossed" the intersection
+	private LinkedList<Car> crossed;
 	
 	public Road()
 	{
@@ -22,8 +24,13 @@ public class Road
 		line.add(car);
 	}
 
-	public Car removeCar()
+	public void carCrosses()
 	{
-		return line.removeLast();
+		crossed.add(line.removeLast());
+	}
+
+	public LinkedList<Car> getCrossedCars()
+	{
+		return crossed;
 	}
 }
