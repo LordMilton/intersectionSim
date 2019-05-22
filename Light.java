@@ -1,13 +1,12 @@
 import java.util.LinkedList;
+enum Color
+{
+	RED, YELLOW, GREEN;
+}
 
 //Represents traffic light controlling a set of roads
 public class Light
-{
-	public enum Color
-	{
-		RED, YELLOW, GREEN;
-	}
-
+{	
 	private Color lightColor;
 	private LinkedList<Road> roadsControlled;
 	private int ticksAsRed;
@@ -22,6 +21,12 @@ public class Light
 		this.ticksAsYellow = ticksAsYellow;
 		this.ticksAsGreen = ticksAsGreen;
 		ticksUntilChange = this.ticksAsRed;
+	}
+
+	public Light(int ticksAsRed, int ticksAsYellow, int ticksAsGreen, Color startingColor)
+	{
+		Light(ticksAsRed, ticksAsYellow, ticksAsGreen);
+		lightColor = startingColor;
 	}
 
 	public addRoad(Road newRoad)
