@@ -21,7 +21,7 @@ public class Road
 
 	public void addCar(Car car)
 	{
-		line.add(car);
+		line.addFirst(car);
 	}
 
 	public void setFirstCar()
@@ -32,7 +32,7 @@ public class Road
 
 	public void carCrosses()
 	{
-		crossed.add(line.removeLast());
+		crossed.addFirst(line.removeLast());
 	}
 
 	public LinkedList<Car> getCrossedCars()
