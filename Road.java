@@ -30,6 +30,8 @@ public class Road
 			line.peek().makeFirstCar();
 	}
 
+	//TODO handle crossing the cars, not just be told when a car has crossed (will need to be told
+	//when light is green/red)
 	public void carCrosses()
 	{
 		crossed.addFirst(line.removeLast());
