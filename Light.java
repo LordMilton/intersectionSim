@@ -67,6 +67,10 @@ public class Light
 				case Color.GREEN:
 					lightColor = Color.YELLOW;
 					ticksUntilChange = ticksAsYellow;
+					for(Road road:roads)
+					{
+						road.setFirstCar();
+					}
 					break;
 			}
 		}

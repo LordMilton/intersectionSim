@@ -24,6 +24,12 @@ public class Road
 		line.add(car);
 	}
 
+	public void setFirstCar()
+	{
+		if(!line.isEmpty())
+			line.peek().makeFirstCar();
+	}
+
 	public void carCrosses()
 	{
 		crossed.add(line.removeLast());
