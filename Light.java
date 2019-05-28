@@ -54,7 +54,6 @@ public class Light
 		ticksUntilChange--;
 		if(ticksUntilChange == 0)
 		{
-			//TODO have roads handle crossing cars (tell the when light changes, etc.)
 			switch(lightColor)
 			{
 				case Color.RED:

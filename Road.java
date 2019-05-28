@@ -1,22 +1,37 @@
 import java.util.LinkedList;
+import java.util.Iterator;
 
 //Represents a queue of Cars waiting at an intersection
 public class Road
 {
+	//The Traffic Light that controls this road
+	private Light controllingLight;
 	//Used as a queue, but all Cars need to be updated each tick
 	private LinkedList<Car> line;
 	//All cars which have left line aka "crossed" the intersection
 	private LinkedList<Car> crossed;
 	
-	public Road()
+	public Road(Light light)
 	{
 		line = new LinkedList<>();
+		controllingLight = light;
 	}
 
 	public void addOneTick()
 	{
-		for(Car car:line)
-			car.addOneTick();
+		if(controllingLight.getColor() == Color.GREEN)
+		{
+			line.peek().setCanCross();
+		}
+
+		Iterator i = line.descendingIterator();
+		boolean doneCrossing = false;
+		for(i.hasNext())
+		{
+			doneCrossing = i.next().addOneTick();
+		}
+		if(doneCrossing)
+			crossed = line.removeFirst();
 	}
 
 	public void addCar(Car car)
@@ -30,8 +45,6 @@ public class Road
 			line.peek().makeFirstCar();
 	}
 
-	//TODO handle crossing the cars, not just be told when a car has crossed (will need to be told
-	//when light is green/red)
 	public void carCrosses()
 	{
 		crossed.addFirst(line.removeLast());
