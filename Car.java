@@ -28,17 +28,17 @@ public class Car
 		double crossMultiplier = 1;
 		if(firstCar)
 			crossMultiplier = FIRST_CAR_CROSS_TIME_MULTIPLIER;
-		if(ticksCrossing >= ceil(ticksToCross * crossMultiplieri))
+		if(ticksCrossing >= Math.ceil(ticksToCrossIntersection * crossMultiplier))
 			return true;
 		return false;
 	}
 
-	public void getTicks()
+	public int getTicks()
 	{
 		return ticksWaiting;
 	}
 
-	public void getTicksToCross();
+	public int getTicksToCross()
 	{
 		return ticksToCrossIntersection;
 	}

@@ -26,12 +26,12 @@ public class Road
 
 		Iterator i = line.descendingIterator();
 		boolean doneCrossing = false;
-		for(i.hasNext())
+		while(i.hasNext())
 		{
-			doneCrossing = i.next().addOneTick();
+			doneCrossing = ((Car)i.next()).addOneTick();
 		}
 		if(doneCrossing)
-			crossed = line.removeFirst();
+			carCrosses();
 	}
 
 	public void addCar(Car car)
@@ -45,7 +45,7 @@ public class Road
 			line.peek().makeFirstCar();
 	}
 
-	public void carCrosses()
+	private void carCrosses()
 	{
 		crossed.addFirst(line.removeLast());
 	}

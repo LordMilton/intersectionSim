@@ -25,7 +25,7 @@ public class Light
 
 	public Light(int ticksAsRed, int ticksAsYellow, int ticksAsGreen, Color startingColor)
 	{
-		Light(ticksAsRed, ticksAsYellow, ticksAsGreen);
+		this(ticksAsRed, ticksAsYellow, ticksAsGreen);
 		lightColor = startingColor;
 	}
 
@@ -56,19 +56,19 @@ public class Light
 		{
 			switch(lightColor)
 			{
-				case Color.RED:
+				case RED:
 					lightColor = Color.GREEN;
 					ticksUntilChange = ticksAsGreen;
-					for(Road road:roads)
+					for(Road road:roadsControlled)
 					{
 						road.setFirstCar();
 					}
 					break;
-				case Color.YELLOW:
+				case YELLOW:
 					lightColor = Color.RED;
 					ticksUntilChange = ticksAsRed;
 					break;
-				case Color.GREEN:
+				case GREEN:
 					lightColor = Color.YELLOW;
 					ticksUntilChange = ticksAsYellow;
 					break;
