@@ -4,6 +4,7 @@ import java.util.Iterator;
 //Represents a queue of Cars waiting at an intersection
 public class Road
 {
+	private String identifier;
 	//The Traffic Light that controls this road
 	private Light controllingLight;
 	//Used as a queue, but all Cars need to be updated each tick
@@ -11,8 +12,9 @@ public class Road
 	//All cars which have left line aka "crossed" the intersection
 	private LinkedList<Car> crossed;
 	
-	public Road(Light light)
+	public Road(String identifier, Light light)
 	{
+		this.identifier = identifier;
 		line = new LinkedList<>();
 		controllingLight = light;
 	}
@@ -32,6 +34,11 @@ public class Road
 		}
 		if(doneCrossing)
 			carCrosses();
+	}
+
+	public String getIdentifier()
+	{
+		return identifier;
 	}
 
 	public void addCar(Car car)

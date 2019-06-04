@@ -6,7 +6,8 @@ enum Color
 
 //Represents traffic light controlling a set of roads
 public class Light
-{	
+{
+	private String identifier;
 	private Color lightColor;
 	private LinkedList<Road> roadsControlled;
 	private int ticksAsRed;
@@ -14,8 +15,9 @@ public class Light
 	private int ticksAsGreen;
 	private int ticksUntilChange;
 
-	public Light(int ticksAsRed, int ticksAsYellow, int ticksAsGreen)
+	public Light(String identifier, int ticksAsRed, int ticksAsYellow, int ticksAsGreen)
 	{
+		this.identifier = identifier;
 		lightColor = Color.RED;
 		this.ticksAsRed = ticksAsRed;
 		this.ticksAsYellow = ticksAsYellow;
@@ -23,10 +25,15 @@ public class Light
 		ticksUntilChange = this.ticksAsRed;
 	}
 
-	public Light(int ticksAsRed, int ticksAsYellow, int ticksAsGreen, Color startingColor)
+	public Light(String identifier, int ticksAsRed, int ticksAsYellow, int ticksAsGreen, Color startingColor)
 	{
-		this(ticksAsRed, ticksAsYellow, ticksAsGreen);
+		this(identifier, ticksAsRed, ticksAsYellow, ticksAsGreen);
 		lightColor = startingColor;
+	}
+
+	public String getIdentifier()
+	{
+		return identifier;
 	}
 
 	public void addRoad(Road newRoad)
