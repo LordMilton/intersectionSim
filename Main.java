@@ -1,7 +1,14 @@
-public static void main(String[] args)
+public class Main
 {
-	if(args.length != 2)
+	public static void main(String[] args)
 	{
-		System.out.println("One argument expected: input file");
+		/*
+		   if(args.length != 2)
+		   {
+		   System.out.println("One argument expected: input file");
+		   }
+		   */
+
+
 	}
 }
