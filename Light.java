@@ -10,24 +10,26 @@ public class Light
 	private String identifier;
 	private Color lightColor;
 	private LinkedList<Road> roadsControlled;
-	private int ticksAsRed;
+	private LinkedList<Light> dependencies;
+	private int prevLightBuffer;
 	private int ticksAsYellow;
 	private int ticksAsGreen;
 	private int ticksUntilChange;
 
-	public Light(String identifier, int ticksAsRed, int ticksAsYellow, int ticksAsGreen)
+	public Light(String identifier, LinkedList<Light> dependencies, int prevLightBuffer int ticksAsYellow, int ticksAsGreen)
 	{
 		this.identifier = identifier;
 		lightColor = Color.RED;
-		this.ticksAsRed = ticksAsRed;
+		this.dependencies = dependencies;
+		this.prevLightBuffer = prevLightBuffer;
 		this.ticksAsYellow = ticksAsYellow;
 		this.ticksAsGreen = ticksAsGreen;
 		ticksUntilChange = this.ticksAsRed;
 	}
 
-	public Light(String identifier, int ticksAsRed, int ticksAsYellow, int ticksAsGreen, Color startingColor)
+	public Light(String identifier, LinkedList<Light> dependencies, int prevLightBuffer, int ticksAsYellow, int ticksAsGreen, Color startingColor)
 	{
-		this(identifier, ticksAsRed, ticksAsYellow, ticksAsGreen);
+		this(identifier, dependencies, prevLightBuffer, ticksAsYellow, ticksAsGreen);
 		lightColor = startingColor;
 	}
 
@@ -56,6 +58,11 @@ public class Light
 		return lightColor;
 	}
 
+	public void previousLightExpired()
+	{
+		ticksUntilChange = prevLightBuffer;
+	}
+
 	public void addOneTick()
 	{
 		ticksUntilChange--;
@@ -73,7 +80,10 @@ public class Light
 					break;
 				case YELLOW:
 					lightColor = Color.RED;
-					ticksUntilChange = ticksAsRed;
+					for(Light dependency:dependencies)
+					{
+						dependency.previousLightExpired();
+					}
 					break;
 				case GREEN:
 					lightColor = Color.YELLOW;
