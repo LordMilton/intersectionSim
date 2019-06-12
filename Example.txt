@@ -1,8 +1,11 @@
 Lights
-north,
-west,
+northToEast,
+northToWest,
+westToEast,
 westToNorth,
-east,
+eastToWest,
+eastToEast,
+eastToNorth,
 Roads
 north1,
 north2,
