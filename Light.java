@@ -16,7 +16,7 @@ public class Light
 	private int ticksAsGreen;
 	private int ticksUntilChange;
 
-	public Light(String identifier, LinkedList<Light> dependencies, int prevLightBuffer, int ticksAsYellow, int ticksAsGreen)
+	public Light(String identifier, LinkedList<Light> dependencies, int ticksAsGreen, int ticksAsYellow, int prevLightBuffer)
 	{
 		this.identifier = identifier;
 		lightColor = Color.RED;
@@ -26,9 +26,9 @@ public class Light
 		this.ticksAsGreen = ticksAsGreen;
 	}
 
-	public Light(String identifier, LinkedList<Light> dependencies, int prevLightBuffer, int ticksAsYellow, int ticksAsGreen, Color startingColor)
+	public Light(String identifier, LinkedList<Light> dependencies, int ticksAsGreen, int ticksAsYellow, int prevLightBuffer, Color startingColor)
 	{
-		this(identifier, dependencies, prevLightBuffer, ticksAsYellow, ticksAsGreen);
+		this(identifier, dependencies, ticksAsGreen, ticksAsYellow, prevLightBuffer);
 		lightColor = startingColor;
 		if(lightColor = Color.GREEN)
 			ticksUntilChange = ticksAsGreen;
