@@ -1,6 +1,6 @@
 Lights
-northToEast,13,4,4
-northToWest,42,4,4
+northToEast,13,4,4,Starter
+northToWest,42,4,4,Starter
 westToEast,133,5,4
 westToNorth,23,4,4
 eastToWest,133,5,4
