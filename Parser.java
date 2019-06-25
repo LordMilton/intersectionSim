@@ -5,7 +5,23 @@ public class Parser
 {
 	public static parseFile(Scanner infile, LinkedList<Road> roads, LinkedList<Light> lights)
 	{
-		
+		String[] nextLine;
+		infile.nextLine(); //"Lights"
+		nextLine = infile.nextLine().split(",");
+		while(nextLine.length > 1)
+		{
+			Light next;
+			if(nextLine.length == 5)
+				next = new Light(nextLine[0], Integer.parseInt(nextLine[1]),
+						 Integer.parseInt(nextLine[2]),
+						 Integer.parseInt(nextLine[3]), Color.GREEN);
+			else
+				next = new Light(nextLine[0], Integer.parseInt(nextLine[1]),
+						 Integer.parseInt(nextLine[2]),
+						 Integer.parseInt(nextLine[3]));
+			lights.add(next);
+			nextLine = infile.nextLine().split("c");
+		}
 	}
 
 	public static void main(String[] args)
