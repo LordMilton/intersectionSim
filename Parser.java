@@ -20,8 +20,26 @@ public class Parser
 						 Integer.parseInt(nextLine[2]),
 						 Integer.parseInt(nextLine[3]));
 			lights.add(next);
-			nextLine = infile.nextLine().split("c");
+			nextLine = infile.nextLine().split(",");
 		}
+		//"Light Orders"
+		while(nextLine.length > 1)
+		{
+			Light cur = findLight(nextLine[0], lights);
+			for(int i = 1; i < nextLine.length; ++i)
+				cur.addDependency(findLight(nextLine[i]), lights);
+		}
+
+	}
+
+	private static Light findLight(String identifier, LinkedList<Light> lights)
+	{
+		for(Light light:lights)
+		{
+			if(light.getIdentifier().equals(identifier))
+				return light;
+		}
+		return null;
 	}
 
 	public static void main(String[] args)
