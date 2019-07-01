@@ -29,7 +29,14 @@ public class Parser
 			for(int i = 1; i < nextLine.length; ++i)
 				cur.addDependency(findLight(nextLine[i]), lights);
 		}
-
+		//"Roads"
+		while(!(nextLine[0].equals("End")))
+		{
+			Road cur = new Road(nextLine[0], Integer.parseInt(nextLine[1]),
+					    findLight(nextLine[2]));
+			roads.add(cur);
+			nextLine = infile.nextLine().split(",");
+		}
 	}
 
 	private static Light findLight(String identifier, LinkedList<Light> lights)
