@@ -3,7 +3,7 @@ import java.io.File;
 
 public class Parser
 {
-	public static parseFile(Scanner infile, LinkedList<Road> roads, LinkedList<Light> lights)
+	public static boolean parseFile(Scanner infile, LinkedList<Road> roads, LinkedList<Light> lights)
 	{
 		String[] nextLine;
 		infile.nextLine(); //"Lights"
@@ -39,6 +39,8 @@ public class Parser
 			roads.add(cur);
 			nextLine = infile.nextLine().split(",");
 		}
+
+		return true;
 	}
 
 	private static Light findLight(String identifier, LinkedList<Light> lights)
