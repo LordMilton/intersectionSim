@@ -30,9 +30,9 @@ public class Light
 	{
 		this(identifier, ticksAsGreen, ticksAsYellow, prevLightBuffer);
 		lightColor = startingColor;
-		if(lightColor = Color.GREEN)
+		if(lightColor == Color.GREEN)
 			ticksUntilChange = ticksAsGreen;
-		else if(lightColor = Color.YELLOW)
+		else if(lightColor == Color.YELLOW)
 			ticksUntilChange = ticksAsYellow;
 	}
 

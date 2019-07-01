@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.util.*;
 import java.io.File;
 
 public class Parser
@@ -27,15 +27,15 @@ public class Parser
 		{
 			Light cur = findLight(nextLine[0], lights);
 			for(int i = 1; i < nextLine.length; ++i)
-				cur.addDependency(findLight(nextLine[i]), lights);
+				cur.addDependency(findLight(nextLine[i], lights));
 			lights.add(cur);
 			nextLine = infile.nextLine().split(",");
 		}
 		//"Roads"
 		while(!(nextLine[0].equals("End")))
 		{
-			Road cur = new Road(nextLine[0], Integer.parseInt(nextLine[1]),
-					    findLight(nextLine[2]));
+			Road cur = new Road(nextLine[0], findLight(nextLine[2], lights),
+					    Integer.parseInt(nextLine[1]));
 			roads.add(cur);
 			nextLine = infile.nextLine().split(",");
 		}
@@ -62,7 +62,13 @@ public class Parser
 		   }
 		   */
 		//Filename will be obtained from command line args
-		Scanner scan = new Scanner(new File("Example.txt"));
+		Scanner scan = new Scanner(System.in);
+		try{
+			scan = new Scanner(new File("Example.txt"));
+		}catch(Exception e){
+			System.err.println("Could not find a file named "+ args[1]);
+			System.exit(1);
+		}
 		
 		//This will be obtained from command line args
 		int ticksToRun = 2000;
