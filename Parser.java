@@ -8,36 +8,51 @@ public class Parser
 		String[] nextLine;
 		infile.nextLine(); //"Lights"
 		nextLine = infile.nextLine().split(",");
-		while(nextLine.length > 1)
-		{
-			Light next;
-			if(nextLine.length == 5)
-				next = new Light(nextLine[0], Integer.parseInt(nextLine[1]),
-						 Integer.parseInt(nextLine[2]),
-						 Integer.parseInt(nextLine[3]), Color.GREEN);
-			else
-				next = new Light(nextLine[0], Integer.parseInt(nextLine[1]),
-						 Integer.parseInt(nextLine[2]),
-						 Integer.parseInt(nextLine[3]));
-			lights.add(next);
-			nextLine = infile.nextLine().split(",");
+		try{
+			while(nextLine.length > 1)
+			{
+				Light next;
+				if(nextLine.length == 5)
+					next = new Light(nextLine[0], Integer.parseInt(nextLine[1]),
+							Integer.parseInt(nextLine[2]),
+							Integer.parseInt(nextLine[3]), Color.GREEN);
+				else
+					next = new Light(nextLine[0], Integer.parseInt(nextLine[1]),
+							Integer.parseInt(nextLine[2]),
+							Integer.parseInt(nextLine[3]));
+				lights.add(next);
+				nextLine = infile.nextLine().split(",");
+			}
+		}catch(Exception e){
+			System.err.println("Unable to parse \"Lights\" section");
+			System.exit(1);
 		}
 		//"Light Orders"
-		while(nextLine.length > 1)
-		{
-			Light cur = findLight(nextLine[0], lights);
-			for(int i = 1; i < nextLine.length; ++i)
-				cur.addDependency(findLight(nextLine[i], lights));
-			lights.add(cur);
-			nextLine = infile.nextLine().split(",");
+		try{
+			while(nextLine.length > 1)
+			{
+				Light cur = findLight(nextLine[0], lights);
+				for(int i = 1; i < nextLine.length; ++i)
+					cur.addDependency(findLight(nextLine[i], lights));
+				lights.add(cur);
+				nextLine = infile.nextLine().split(",");
+			}
+		}catch(Exception e){
+			System.err.println("Unable to parse \"Light Orders\" section");
+			System.exit(1);
 		}
 		//"Roads"
-		while(!(nextLine[0].equals("End")))
-		{
-			Road cur = new Road(nextLine[0], findLight(nextLine[2], lights),
-					    Integer.parseInt(nextLine[1]));
-			roads.add(cur);
-			nextLine = infile.nextLine().split(",");
+		try{
+			while(!(nextLine[0].equals("End")))
+			{
+				Road cur = new Road(nextLine[0], findLight(nextLine[2], lights),
+						Integer.parseInt(nextLine[1]));
+				roads.add(cur);
+				nextLine = infile.nextLine().split(",");
+			}
+		}catch(Exception e){
+			System.err.println("Unable to parse \"Roads\" section");
+			System.exit(1);
 		}
 
 		return true;
@@ -69,7 +84,7 @@ public class Parser
 			System.err.println("Could not find a file named "+ args[1]);
 			System.exit(1);
 		}
-		
+
 		//This will be obtained from command line args
 		int ticksToRun = 2000;
 
