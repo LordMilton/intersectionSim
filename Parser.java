@@ -25,8 +25,10 @@ public class Parser
 			}
 		}catch(Exception e){
 			System.err.println("Unable to parse \"Lights\" section");
+			e.printStackTrace(System.out);
 			System.exit(1);
 		}
+		nextLine = infile.nextLine().split(",");
 		//"Light Orders"
 		try{
 			while(nextLine.length > 1)
@@ -39,19 +41,22 @@ public class Parser
 			}
 		}catch(Exception e){
 			System.err.println("Unable to parse \"Light Orders\" section");
+			e.printStackTrace(System.out);
 			System.exit(1);
 		}
+		nextLine = infile.nextLine().split(",");
 		//"Roads"
 		try{
 			while(!(nextLine[0].equals("End")))
 			{
 				Road cur = new Road(nextLine[0], findLight(nextLine[2], lights),
-						Integer.parseInt(nextLine[1]));
+						Double.parseDouble(nextLine[1]));
 				roads.add(cur);
 				nextLine = infile.nextLine().split(",");
 			}
 		}catch(Exception e){
 			System.err.println("Unable to parse \"Roads\" section");
+			e.printStackTrace(System.out);
 			System.exit(1);
 		}
 
