@@ -74,7 +74,7 @@ public class Light
 
 	public void addOneTick()
 	{
-		System.err.println("My name is: "+ identifier);
+//		System.err.println("My name is: "+ identifier);
 		ticksUntilChange--;
 		if(ticksUntilChange == 0)
 		{

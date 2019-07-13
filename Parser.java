@@ -74,7 +74,7 @@ public class Parser
 			if(light.getIdentifier().equals(identifier))
 				return light;
 		}
-		System.err.println("why");
+//		System.err.println("why");
 		return null;
 	}
 
