@@ -21,6 +21,7 @@ public class Light
 		this.identifier = identifier;
 		lightColor = Color.RED;
 		this.dependencies = new LinkedList<>();
+		this.roadsControlled = new LinkedList<>();
 		this.prevLightBuffer = prevLightBuffer;
 		this.ticksAsYellow = ticksAsYellow;
 		this.ticksAsGreen = ticksAsGreen;
@@ -73,6 +74,7 @@ public class Light
 
 	public void addOneTick()
 	{
+		System.err.println("My name is: "+ identifier);
 		ticksUntilChange--;
 		if(ticksUntilChange == 0)
 		{

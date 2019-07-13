@@ -49,9 +49,13 @@ public class Parser
 		try{
 			while(!(nextLine[0].equals("End")))
 			{
+//				System.err.println("road name: "+ nextLine[0] +"\tlight name: "+ nextLine[2]);
 				Road cur = new Road(nextLine[0], findLight(nextLine[2], lights),
 						Double.parseDouble(nextLine[1]));
 				roads.add(cur);
+				//Have to add road as a controlled road to the light as well
+				//TODO for some reason, findLight is returning null, figure out when
+				findLight(nextLine[2], lights).addRoad(cur);
 				nextLine = infile.nextLine().split(",");
 			}
 		}catch(Exception e){
@@ -70,6 +74,7 @@ public class Parser
 			if(light.getIdentifier().equals(identifier))
 				return light;
 		}
+		System.err.println("why");
 		return null;
 	}
 

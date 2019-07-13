@@ -21,6 +21,7 @@ public class Road
 	{
 		this.identifier = identifier;
 		line = new LinkedList<>();
+		crossed = new LinkedList<>();
 		controllingLight = light;
 		if(carsPerTick <= 0)
 			throw new IllegalArgumentException();
@@ -30,7 +31,7 @@ public class Road
 
 	public void addOneTick()
 	{
-		if(controllingLight.getColor() == Color.GREEN)
+		if(controllingLight.getColor() == Color.GREEN && line.peek() != null)
 		{
 			line.peek().setCanCross();
 		}
