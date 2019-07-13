@@ -14,6 +14,14 @@ public class Controller
 		this.lights = new LinkedList<>(lights);
 	}
 
+	public void runForXTicks(int ticks)
+	{
+		for(int i = 0; i < ticks; ++i)
+		{
+			advanceOneTick();
+		}
+	}
+
 	public void advanceOneTick()
 	{
 		tickCounter++;

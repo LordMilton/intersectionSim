@@ -79,6 +79,7 @@ public class Parser
 		//Filename will be obtained from command line args
 		Scanner scan = new Scanner(System.in);
 		try{
+//			scan = new Scanner(args[1]);
 			scan = new Scanner(new File("Example.txt"));
 		}catch(Exception e){
 			System.err.println("Could not find a file named "+ args[1]);
@@ -86,10 +87,14 @@ public class Parser
 		}
 
 		//This will be obtained from command line args
+//		int ticksToRun = Integer.parseInt(args[2]);
 		int ticksToRun = 2000;
 
 		LinkedList<Road> roads = new LinkedList<>();
 		LinkedList<Light> lights = new LinkedList<>();
 		parseFile(scan, roads, lights);
+
+		Controller controller = new Controller(roads, lights);
+		controller.runForXTicks(ticksToRun);
 	}
 }
