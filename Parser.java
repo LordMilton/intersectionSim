@@ -36,7 +36,6 @@ public class Parser
 				Light cur = findLight(nextLine[0], lights);
 				for(int i = 1; i < nextLine.length; ++i)
 					cur.addDependency(findLight(nextLine[i], lights));
-				lights.add(cur);
 				nextLine = infile.nextLine().split(",");
 			}
 		}catch(Exception e){
