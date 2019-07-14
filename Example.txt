@@ -9,7 +9,7 @@ eastToNorth,164,4,4
 Light Orders
 northToEast,westToNorth
 westToNorth,westToEast,eastToWest,eastToNorth
-westToEast,eastToEast
+westToEast,northToWest,eastToEast
 eastToEast,northToEast
 Roads
 north1,0.2,northToEast
