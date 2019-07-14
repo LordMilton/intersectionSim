@@ -18,6 +18,11 @@ public class Analysis
 			if(road.getIdentifier().equals(roadId))
 				request = road;
 
+		return roadAvgWait(request);
+	}
+
+	public double roadAvgWait(Road request)
+	{
 		LinkedList<Car> crossed = request.getCrossedCars();
 		int totalTicks = 0;
 		int numCars = 0;
@@ -37,6 +42,11 @@ public class Analysis
 			if(road.getIdentifier().equals(roadId))
 				request = road;
 
+		return roadMaxWait(request);
+	}
+
+	public int roadMaxWait(Road request)
+	{
 		LinkedList<Car> crossed = request.getCrossedCars();
 		int maxTicks = 0;
 		for(Car car:crossed)
@@ -55,12 +65,17 @@ public class Analysis
 			if(light.getIdentifier().equals(lightId))
 				request = light;
 
+		return lightAvgWait(request);
+	}
+
+	public double lightAvgWait(Light request)
+	{
 		LinkedList<Road> controlled = request.getRoads();
 		double totalTicks = 0;
 		int numRoads = 0;
 		for(Road road:controlled)
 		{
-			totalTicks += roadAvgWait(road.getIdentifier());
+			totalTicks += roadAvgWait(road);
 			numRoads++;
 		}
 
@@ -73,13 +88,18 @@ public class Analysis
 		for(Light light:lights)
 			if(light.getIdentifier().equals(lightId))
 				request = light;
-
+		
+		return lightMaxWait(request);
+	}
+	
+	public int lightMaxWait(Light request)
+	{
 		LinkedList<Road> controlled = request.getRoads();
 		int maxTicks = 0;
 		for(Road road:controlled)
 		{
-			if(roadMaxWait(road.getIdentifier()) > maxTicks)
-				maxTicks = roadMaxWait(road.getIdentifier());
+			if(roadMaxWait(road) > maxTicks)
+				maxTicks = roadMaxWait(road);
 		}
 
 		return maxTicks;
