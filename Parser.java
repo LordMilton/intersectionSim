@@ -106,5 +106,19 @@ public class Parser
 
 		Controller controller = new Controller(roads, lights);
 		controller.runForXTicks(ticksToRun);
+
+		Analysis analysis = new Analysis(lights, roads);
+		for(Road road:roads)
+		{
+			System.out.println("Road Name: "+ road.getIdentifier() +
+					 "\tMax Wait: "+ analysis.roadMaxWait(road) +
+					 "\tAvg Wait: "+ analysis.roadAvgWait(road));
+		}
+		for(Light light:lights)
+		{
+			System.out.println("Light Name: "+ light.getIdentifier() +
+					 "\tMax Wait: "+ analysis.lightMaxWait(light) +
+					 "\tAvg Wait: "+ analysis.lightAvgWait(light));
+		}
 	}
 }
