@@ -5,11 +5,12 @@ westToEast,133,5,4
 westToNorth,23,4,4
 eastToWest,133,5,4
 eastToEast,18,4,4
-eastToNorth,151,4,4
+eastToNorth,164,4,4
 Light Orders
 northToEast,westToNorth
 westToNorth,westToEast,eastToWest,eastToNorth
-westToEast,northToEast
+westToEast,eastToEast
+eastToEast,northToEast
 Roads
 north1,0.2,northToEast
 north2,0.2,northToEast
