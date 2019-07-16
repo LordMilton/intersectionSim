@@ -18,6 +18,8 @@ public class Controller
 	{
 		for(int i = 0; i < ticks; ++i)
 		{
+			Scanner scan = new Scanner(System.in);
+			//scan.nextLine();
 			advanceOneTick();
 		}
 	}
@@ -25,6 +27,7 @@ public class Controller
 	public void advanceOneTick()
 	{
 		tickCounter++;
+//		System.err.println("Tick: "+ tickCounter);
 		for(Light light:lights)
 		{
 			light.addOneTick();

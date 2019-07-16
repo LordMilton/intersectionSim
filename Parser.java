@@ -73,7 +73,6 @@ public class Parser
 			if(light.getIdentifier().equals(identifier))
 				return light;
 		}
-//		System.err.println("why");
 		return null;
 	}
 
@@ -97,7 +96,7 @@ public class Parser
 
 		//This will be obtained from command line args
 //		int ticksToRun = Integer.parseInt(args[2]);
-		int ticksToRun = 2000;
+		int ticksToRun = 10000;
 
 		LinkedList<Road> roads = new LinkedList<>();
 		LinkedList<Light> lights = new LinkedList<>();

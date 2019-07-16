@@ -53,6 +53,20 @@ public class Road
 		}
 		if(doneCrossing)
 			carCrosses();
+
+		/*
+		//Debug
+		//#####################
+		System.err.println("My name: "+ identifier +"\tMy light: "+ controllingLight.getColor() +"\tcar progress: "+ nextCarProgress);
+		System.err.print("My cars: ");
+		for(Car car:line)
+		{
+			System.err.print(car.getTicks() +", ");
+		}
+		System.err.println();
+		//#####################
+		//Debug
+		*/
 	}
 
 	public String getIdentifier()
