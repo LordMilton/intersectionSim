@@ -12,7 +12,7 @@ public class Car
 	{
 		ticksWaiting = 0;
 		ticksCrossing = 0;
-		ticksToCrossIntersection = 2;
+		ticksToCrossIntersection = 1;
 		firstCar = false;
 		canCross = false;
 	}
