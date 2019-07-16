@@ -21,10 +21,10 @@ public class Car
 	//and has had enough ticks to cross the intersection
 	public boolean addOneTick()
 	{
-		ticksWaiting++;
-
 		if(canCross)
 			ticksCrossing++;
+		else
+			ticksWaiting++; //time during crossing should not count as time waiting
 		double crossMultiplier = 1;
 		if(firstCar)
 			crossMultiplier = FIRST_CAR_CROSS_TIME_MULTIPLIER;
