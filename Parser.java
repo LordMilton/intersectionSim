@@ -79,22 +79,23 @@ public class Parser
 	public static void main(String[] args)
 	{
 
-		if(args.length != 3)
+		if(args.length != 2)
 		{
 			System.out.println("Two arguments expected: input file, ticks to run simulation for");
+			System.exit(2);
 		}
 
 		//Filename will be obtained from command line args
 		Scanner scan = new Scanner(System.in);
 		try{
-			scan = new Scanner(args[1]);
+			scan = new Scanner(new File(args[0]));
 		}catch(Exception e){
-			System.err.println("Could not find a file named "+ args[1]);
+			System.err.println("Could not find a file named "+ args[0]);
 			System.exit(1);
 		}
 
 		//This will be obtained from command line args
-		int ticksToRun = Integer.parseInt(args[2]);
+		int ticksToRun = Integer.parseInt(args[1]);
 
 		LinkedList<Road> roads = new LinkedList<>();
 		LinkedList<Light> lights = new LinkedList<>();
