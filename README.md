@@ -1,7 +1,7 @@
 # Intersection Simulator
 This program simulates the traffic patterns of an intersection, allowing one to view how long cars waited on each road after an arbitrary number of seconds of simulating
 ### Basics of Use
-Currently, the code can simulate an intersection described in a file (see File Usage) but does not present any statistics once that is finished (this will be done soon, or you can do it yourself!). Besides that, all you have to do it fill out a file yourself. When running the program, the arguments are expected as such: *File name with intersection details*, *Number of ticks (seconds) to run simulation for*. (command line arguments are currently commented out of Parser.java, so args are ignored, intersection file is always Example.txt and number of ticks to run for is 2000).
+Currently, the code can simulate an intersection described in a file (see File Usage) but does not present any statistics once that is finished (this will be done soon, or you can do it yourself!). Besides that, all you have to do it fill out a file yourself. When running the program, the arguments are expected as such: *File name with intersection details*, *Number of ticks (seconds) to run simulation for*. 
 ### File Usage
 The intersection file currently has 3 sections: *Lights*, *Light Orders*, *Roads*. Each section should be denoted with the appropriate word/phrase and the file should end with "End". Lines not denoting sections are parsed as Comma Separated Values (CSVs). An example of a complete file can be seen in *Example.txt*. When making your own file, I encourage starting with actual timings and cars per second measurements obtained from a real intersection as small mistakes in estimates can cause drastic miscalculations in the simulation.
 #### *Lights*
