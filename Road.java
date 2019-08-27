@@ -85,9 +85,10 @@ public class Road
 			line.peek().makeFirstCar();
 	}
 
-	private void carCrosses()
+	private Car carCrosses()
 	{
 		crossed.addFirst(line.removeLast());
+		return crossed.element(); //So Connector can get the car and pass it to the next intersection
 	}
 
 	public LinkedList<Car> getCrossedCars()
