@@ -26,8 +26,15 @@ public class Connector
 			{
 				exit.addCar(line.remove(i));
 				carTimers.remove(i);
+				numCars--;
 				--i;
 			}
+		}
+		
+		Car newCar = entrance.getLastCrossed();
+		if(newCar != null)
+		{
+			addCar(newCar);
 		}
 	}
 
@@ -35,5 +42,6 @@ public class Connector
 	{
 		line.addLast(newCar);
 		carTimers.addLast(ticksToCommute);
+		numCars++;
 	}
 }

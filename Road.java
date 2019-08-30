@@ -16,6 +16,8 @@ public class Road
 	private double nextCarProgress;
 	//All cars which have left line aka "crossed" the intersection
 	private LinkedList<Car> crossed;
+	//This is to feed the Connector for which this Road is the entrance
+	private Car latestCrossed;
 	
 	public Road(String identifier, Light light, double carsPerTick)
 	{
@@ -85,14 +87,20 @@ public class Road
 			line.peek().makeFirstCar();
 	}
 
-	private Car carCrosses()
+	private void carCrosses()
 	{
 		crossed.addFirst(line.removeLast());
-		return crossed.element(); //So Connector can get the car and pass it to the next intersection
 	}
 
 	public LinkedList<Car> getCrossedCars()
 	{
 		return crossed;
+	}
+
+	public Car getLatestCrossed()
+	{
+		Car temp = latestCrossed;
+		latestCrossed = null;
+		return temp;
 	}
 }
