@@ -99,9 +99,10 @@ public class Parser
 
 		LinkedList<Road> roads = new LinkedList<>();
 		LinkedList<Light> lights = new LinkedList<>();
+		LinkedList<Connector> connectors = new LinkedList<>();
 		parseFile(scan, roads, lights);
 
-		Controller controller = new Controller(roads, lights);
+		Controller controller = new Controller(roads, lights, connectors);
 		controller.runForXTicks(ticksToRun);
 
 		Analysis analysis = new Analysis(lights, roads);

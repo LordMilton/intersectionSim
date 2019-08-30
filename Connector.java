@@ -31,7 +31,7 @@ public class Connector
 			}
 		}
 		
-		Car newCar = entrance.getLastCrossed();
+		Car newCar = entrance.getLatestCrossed();
 		if(newCar != null)
 		{
 			addCar(newCar);
